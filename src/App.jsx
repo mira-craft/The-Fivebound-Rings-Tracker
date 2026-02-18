@@ -94,13 +94,13 @@ function CampaignApp() {
             if (!insertError) {
               setState(insertData.state);
               setVersion(insertData.version);
-              versionRef.current = insertData.version; // <--- ADD
+              versionRef.current = insertData.version;
               setLastUpdated(insertData.updated_at);
             }
           } else if (!error && data) {
             setState(data.state);
             setVersion(data.version);
-            versionRef.current = data.version; // <--- ADD
+            versionRef.current = data.version;
             setLastUpdated(data.updated_at);
           }
 
