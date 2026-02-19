@@ -15,9 +15,12 @@ export default function ActivityPanel({ activityLog }) {
       ) : (
         <ul className="activity-panel__list">
           {activityLog.map((entry) => (
-            <li key={entry.id} className="activity-panel__item">
-              <span className="activity-panel__label">{entry.label}</span>
+            <li
+              key={entry.id}
+              className={entry.undone ? "activity-panel__item undone" : "activity-panel__item"}
+            >
               <span className="activity-panel__time">{formatTime(entry.timestamp)}</span>
+              <span className="activity-panel__label">{entry.label}</span>
             </li>
           ))}
         </ul>
