@@ -29,7 +29,7 @@ export function useActionSystem(state, updateState) {
         activityLog: [
           newActivityEntry,
           ...(prev.activityLog ?? []),
-        ].slice(0, 5),
+        ].slice(0, 15),
       };
     });
   }
