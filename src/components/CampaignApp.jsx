@@ -17,7 +17,7 @@ import TelepathicBondModal from "./TelepathicBondModal";
 export default function CampaignApp() {
   const { campaignId } = useParams();
   const { state, updateState, loading } = useCampaignSync(campaignId);
-  const { modalConfig, setModalConfig, performAction, checkDuplicateAndApply, performUndo } =
+  const { modalConfig, setModalConfig, performAction, performUndo } =
     useActionSystem(state, updateState);
 
   const [teleModalOpen, setTeleModalOpen] = useState(false);
@@ -65,23 +65,23 @@ export default function CampaignApp() {
     );
   }
 
-  function applyShortRest() {
-    checkDuplicateAndApply("shortRest", "Short Rest", (prev) => ({
-      ...prev,
-      canChooseCreature: true,
-      spellStoredThisDawn: false,
-    }));
-  }
-
   function handleShortRest() {
-    setModalConfig({
-      title: "Short Rest",
-      message: <span>Take a short rest? This lets you choose a <span className="glow-highlight">new creature type</span> and store a <span className="glow-highlight">new spell</span>.</span>,
-      onConfirm: () => {
-        applyShortRest();
-        setModalConfig(null);
-      },
-    });
+    performAction(
+      "shortRest",
+      "Short Rest",
+      (prev) => ({
+        ...prev,
+        canChooseCreature: true,
+        spellStoredThisDawn: false,
+      }),
+      {
+        message: (
+          <span>
+            Take a short rest? This lets you choose a <span className="glow-highlight">new creature type</span> and store a <span className="glow-highlight">new spell</span>.
+          </span>
+        ),
+      }
+    );
   }
 
   function chooseCreature(type) {

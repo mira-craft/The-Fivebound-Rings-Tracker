@@ -34,7 +34,8 @@ export function useActionSystem(state, updateState) {
     });
   }
 
-  function checkDuplicateAndApply(actionKey, label, updater) {
+  function performAction(actionKey, label, updater, options = {}) {
+    // 1. If recently used, show the duplicate warning immediately (skips normal confirm)
     if (wasActionRecentlyUsed(state.lastActionUsage, actionKey)) {
       const elapsed = getLastUsedElapsed(state.lastActionUsage, actionKey);
       setModalConfig({
@@ -47,22 +48,21 @@ export function useActionSystem(state, updateState) {
       });
       return;
     }
-    applyAction(actionKey, label, updater);
-  }
 
-  function performAction(actionKey, label, updater, options = {}) {
+    // 2. Otherwise show normal confirmation modal
     const { chargeCost, message: customMessage } = options;
     const message =
       customMessage ??
       (chargeCost != null
         ? `This will consume ${chargeCost} charge${chargeCost !== 1 ? "s" : ""}.`
         : "This action will modify the ring state.");
+
     setModalConfig({
       title: `Use ${label}?`,
       message,
       onConfirm: () => {
+        applyAction(actionKey, label, updater);
         setModalConfig(null);
-        checkDuplicateAndApply(actionKey, label, updater);
       },
     });
   }
@@ -116,7 +116,6 @@ export function useActionSystem(state, updateState) {
     modalConfig,
     setModalConfig,
     performAction,
-    checkDuplicateAndApply,
     performUndo,
   };
 }
