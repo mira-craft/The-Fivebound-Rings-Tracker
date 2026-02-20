@@ -402,6 +402,25 @@ input::placeholder {
   font-family: var(--font-body);
 }
 
+/* sub-features (Exclusive to Telepathic Bond) */
+.feature-row.sub-feature {
+  padding-left: 32px;
+  margin-top: -4px;
+  opacity: 0.9;
+  transform: translateX(12px);
+}
+
+.feature-row.sub-feature button {
+  font-size: 0.82rem;
+  padding: 8px 14px;
+  border-style: dashed;
+  border-width: 1px;
+}
+
+.feature-row.sub-feature .feature-meta {
+  font-size: 0.75rem;
+}
+
 @media (max-width: 640px) {
   .feature-row {
     grid-template-columns: 1fr auto;

@@ -15,6 +15,7 @@ export const FEATURES = [
   {
     name: "Coordinated Strike",
     cost: 1,
+    isSubFeature: true,
     meta: "1 charge / bonus action",
     description: [
       "Choose a creature within 5 feet of a ring bearer and another ring bearer who can see the target. Both ring bearers count as flanking the target until the start of your next turn.",
@@ -24,6 +25,7 @@ export const FEATURES = [
   {
     name: "Defensive Formation",
     cost: 1,
+    isSubFeature: true,
     meta: "1 charge / 30 ft. / reaction",
     trigger: "An ally within your telepathic bond is flanked and targeted by an attack.",
     description: [
