@@ -19,7 +19,7 @@ import TelepathicBondModal from "./TelepathicBondModal";
 export default function CampaignApp() {
   const { campaignId } = useParams();
   const { state, updateState, loading } = useCampaignSync(campaignId);
-  const { modalConfig, setModalConfig, performAction, performUndo } =
+  const { modalConfig, setModalConfig, performAction, performUndo, applyAction } =
     useActionSystem(state, updateState);
 
   const [teleModalOpen, setTeleModalOpen] = useState(false);
@@ -196,6 +196,33 @@ export default function CampaignApp() {
     setTeleOptions({ range: false, duration: false });
   }
 
+  function handleAddAttunedName(name) {
+    const trimmed = name.trim();
+    if (!trimmed) return;
+    const names = state.attunedNames ?? [];
+    if (names.length >= 5) return;
+    if (names.some((n) => n.toLowerCase() === trimmed.toLowerCase())) return;
+    applyAction(
+      "addAttunedName",
+      `Attuned ${trimmed}`,
+      (prev) => ({
+        ...prev,
+        attunedNames: [...(prev.attunedNames ?? []), trimmed],
+      })
+    );
+  }
+
+  function handleRemoveAttunedName(name) {
+    applyAction(
+      "removeAttunedName",
+      `Removed ${name}`,
+      (prev) => ({
+        ...prev,
+        attunedNames: (prev.attunedNames ?? []).filter((n) => n !== name),
+      })
+    );
+  }
+
   if (loading) {
     return <div className="container">Loading campaign...</div>;
   }
@@ -219,6 +246,9 @@ export default function CampaignApp() {
 
         <FeaturesSection
           onUseFeature={useFeature}
+          attunedNames={state.attunedNames ?? []}
+          onAddName={handleAddAttunedName}
+          onRemoveName={handleRemoveAttunedName}
         />
 
         <SpellSection

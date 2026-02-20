@@ -1,4 +1,5 @@
 import Tooltip from "./Tooltip";
+import AttunedNames from "./AttunedNames";
 import { FEATURES } from "../data/features";
 
 function formatMeta(meta) {
@@ -97,7 +98,7 @@ function SubFeature({ name, cost, meta, trigger, description, onUseFeature }) {
   );
 }
 
-export default function FeaturesSection({ onUseFeature }) {
+export default function FeaturesSection({ onUseFeature, attunedNames, onAddName, onRemoveName }) {
   const telepathicBond = FEATURES.find(f => f.name === "Telepathic Bond");
   const overchargeFeatures = FEATURES.filter(f => f.isSubFeature);
   const sharedBurden = FEATURES.find(f => f.name === "Shared Burden");
@@ -107,7 +108,7 @@ export default function FeaturesSection({ onUseFeature }) {
       <h2>Features</h2>
 
       <div className="features-list">
-        {/* Telepathic Bond with nested overcharge options */}
+        {/* Left column: Telepathic Bond with nested overcharge options */}
         <PrimaryFeature {...telepathicBond} onUseFeature={onUseFeature}>
           {overchargeFeatures.length > 0 && (
             <div className="subfeatures-group">
@@ -118,10 +119,17 @@ export default function FeaturesSection({ onUseFeature }) {
           )}
         </PrimaryFeature>
 
-        {/* Shared Burden */}
-        {sharedBurden && (
-          <PrimaryFeature {...sharedBurden} onUseFeature={onUseFeature} />
-        )}
+        {/* Right column: Shared Burden + Attuned Bearers */}
+        <div className="features-right-col">
+          {sharedBurden && (
+            <PrimaryFeature {...sharedBurden} onUseFeature={onUseFeature} />
+          )}
+          <AttunedNames
+            names={attunedNames}
+            onAddName={onAddName}
+            onRemoveName={onRemoveName}
+          />
+        </div>
       </div>
     </div>
   );
