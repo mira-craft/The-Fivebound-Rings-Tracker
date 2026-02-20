@@ -35,7 +35,7 @@ export function useActionSystem(state, updateState) {
   }
 
   function performAction(actionKey, label, updater, options = {}) {
-    // 1. If recently used, show the duplicate warning immediately (skips normal confirm)
+    // Case 1: recently used → show warning modal with time, skip normal confirm
     if (wasActionRecentlyUsed(state.lastActionUsage, actionKey)) {
       const elapsed = getLastUsedElapsed(state.lastActionUsage, actionKey);
       setModalConfig({
@@ -49,7 +49,7 @@ export function useActionSystem(state, updateState) {
       return;
     }
 
-    // 2. Otherwise show normal confirmation modal
+    // Case 2: not recently used → show normal confirmation modal
     const { chargeCost, message: customMessage } = options;
     const message =
       customMessage ??

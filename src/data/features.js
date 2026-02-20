@@ -5,22 +5,22 @@ export const FEATURES = [
     meta: "action or bonus action (30 ft / 120 ft.)",
     description: [
       [
-        { text: "For the next 10 minutes, you can communicate " },
+        { text: "For the next 10 minutes (extended 1 hour), you can communicate " },
         { text: "telepathically", bold: true },
         { text: " with each creature that was within " },
-        { text: "30 feet", bold: true },
+        { text: "30 ft. (extended 120 ft.)", bold: true },
         { text: " of you when you activated this feature and that is bearing a ring." },
       ],
       [
         { text: "The bond on a creature ends early if it moves more than " },
-        { text: "30 feet", bold: true },
+        { text: "30 ft. (extended 120 ft.)", bold: true },
         { text: " away from the closest ring bearer. Only one " },
         { text: "telepathic bond", bold: true },
         { text: " can be active at a time." },
       ],
     ],
     overcharge: [
-      "Extended Range (+1 charge): Range increases to 120 feet.",
+      "Extended Range (+1 charge): Ranges increase to 120 feet.",
       "Extended Duration (+1 charge): Duration increases to 1 hour.",
     ],
   },
