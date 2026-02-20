@@ -47,7 +47,6 @@ export default function CampaignApp() {
       (prev) => ({
         ...prev,
         charges: Math.min(prev.charges + 3, MAX_CHARGES),
-        usedFeatures: [],
         spellStoredThisDawn: false,
         rechargeUsedThisDawn: false,
         canChooseCreature: true,
@@ -57,7 +56,6 @@ export default function CampaignApp() {
           <span>
             Take a long rest? This lets you{' '}
             <span className="glow-highlight">regain up to 3 charges (max 10)</span>,{' '}
-            <span className="glow-highlight">reset used features</span>,{' '}
             <span className="glow-highlight">clear the stored spell flag</span>,{' '}
             and <span className="glow-highlight">choose a new creature type</span>.
           </span>
@@ -109,7 +107,6 @@ export default function CampaignApp() {
     performAction(`feature:${name}`, name, (prev) => ({
       ...prev,
       charges: prev.charges - cost,
-      usedFeatures: [...prev.usedFeatures, name],
     }), { chargeCost: cost });
   }
 
@@ -188,7 +185,6 @@ export default function CampaignApp() {
     performAction("feature:Telepathic Bond", "Telepathic Bond", (prev) => ({
       ...prev,
       charges: prev.charges - totalCost,
-      usedFeatures: [...prev.usedFeatures, featureName],
     }), { chargeCost: totalCost });
     setTeleModalOpen(false);
     setTeleOptions({ range: false, duration: false });
@@ -221,7 +217,6 @@ export default function CampaignApp() {
         </div>
 
         <FeaturesSection
-          usedFeatures={state.usedFeatures}
           onUseFeature={useFeature}
         />
 

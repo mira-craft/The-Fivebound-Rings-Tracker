@@ -364,94 +364,227 @@ input::placeholder {
   margin-top: 12px;
 }
 
-/* ---- Feature Rows ---- */
+/* ---- Features ---- */
 
-.features-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+.features-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
   margin-bottom: 20px;
 }
 
-.feature-subsection {
+@media (min-width: 1024px) {
+  .features-list {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 20px;
+  }
+}
+
+/* Primary Feature Card */
+.feature-card {
+  background: none;
+  border: none;
+  border-radius: var(--radius-arcane);
+  padding: 16px 18px;
+  transition: all 0.25s ease;
+}
+
+.feature-card:hover {
+  border-color: rgba(201, 165, 92, 0.4);
+}
+
+.feature-card-header {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-left: 14px;
-  border-left: 1px solid rgba(201, 165, 92, 0.2);
-}
-
-.subsection-header {
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--color-gold-soft);
-  opacity: 0.7;
-  margin-bottom: 4px;
-}
-
-.shared-burden-section {
-  margin-top: 24px;
-}
-
-.feature-row {
-  display: grid;
-  grid-template-columns: minmax(200px, 1fr) minmax(120px, 1fr) auto;
-  gap: 12px;
   align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 
-.feature-row button {
-  background: linear-gradient(145deg, #161a30, #101428);
-  border-color: rgba(201, 165, 92, 0.35);
-  width: 100%;
-  text-align: left;
+.feature-card-button {
+  flex: 1;
+  background: linear-gradient(145deg, #181c34, #12152a);
+  border: 1px solid var(--color-border-gold);
+  border-radius: var(--radius-arcane);
+  padding: 8px 14px;
   margin: 0;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.feature-row button:hover:not(:disabled) {
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.4),
-    0 0 18px rgba(201, 165, 92, 0.3);
-  border-color: var(--color-gold-primary);
+.feature-card-button:hover {
+  background: linear-gradient(145deg, #1d223f, #151932);
+  border-color: var(--color-gold-bright);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), var(--shadow-glow-gold-subtle);
+  transform: translateY(-1px);
 }
 
-.feature-meta {
-  font-size: 0.875rem;
+.feature-card-button .feature-name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--color-text-primary);
+  transition: color 0.2s ease;
+}
+
+.feature-card-button:hover .feature-name {
+  color: var(--color-gold-bright);
+}
+
+.feature-card-button .feature-cost {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-gold-soft);
+  padding: 3px 10px;
+  background: rgba(201, 165, 92, 0.08);
+  border-radius: 4px;
+  margin-left: 12px;
+}
+
+.feature-info-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.feature-card .feature-meta {
+  font-size: 0.8125rem;
   color: var(--color-text-muted);
   letter-spacing: 0.3px;
   font-family: var(--font-body);
+  margin-bottom: 0;
+  padding-left: 0;
 }
 
-/* sub-features (Exclusive to Telepathic Bond) */
-.feature-row.sub-feature {
-  padding-left: 32px;
-  margin-top: -4px;
+/* Subfeatures Group */
+.subfeatures-group {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(201, 165, 92, 0.12);
+}
+
+.subfeatures-label {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--color-gold-soft);
+  opacity: 0.6;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.subfeature-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 12px;
+  align-items: center;
+  padding: 8px 0 8px 16px;
+  position: relative;
+}
+
+.subfeature-item:not(:last-child) {
+  margin-bottom: 6px;
+}
+
+/* Subtle left indicator */
+.subfeature-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: rgba(201, 165, 92, 0.15);
+  border-radius: 2px;
+}
+
+.subfeature-button {
+  background: linear-gradient(145deg, #181c34, #12152a);
+  border: 1px solid rgba(201, 165, 92, 0.25);
+  border-radius: var(--radius-arcane);
+  padding: 6px 12px;
+  margin: 4px 0;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.subfeature-button:hover {
+  background: linear-gradient(145deg, #1d223f, #151932);
+  border-color: rgba(201, 165, 92, 0.284);
+  transform: translateY(-1px);
+}
+
+.subfeature-button:hover .subfeature-name {
+  color: var(--color-gold-bright);
+}
+
+.subfeature-name {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
   opacity: 0.9;
-  transform: translateX(12px);
+  transition: color 0.2s ease;
 }
 
-.feature-row.sub-feature button {
-  font-size: 0.82rem;
-  padding: 8px 14px;
-  border-style: dashed;
-  border-width: 1px;
+.subfeature-cost {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--color-gold-soft);
+  padding: 2px 7px;
+  background: rgba(201, 165, 92, 0.08);
+  border-radius: 3px;
+  opacity: 0.8;
 }
 
-.feature-row.sub-feature .feature-meta {
+.subfeature-info-icon {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  flex-shrink: 0;
+}
+
+.subfeature-meta {
   font-size: 0.75rem;
+  color: var(--color-text-muted);
+  opacity: 0.7;
+  letter-spacing: 0.2px;
+  font-family: var(--font-body);
+  grid-column: 1 / -1;
+  padding-left: 16px;
+  margin-top: -2px;
 }
 
 @media (max-width: 640px) {
-  .feature-row {
+  .feature-card-button {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .feature-card-button .feature-cost {
+    margin-left: 0;
+  }
+
+  .subfeature-item {
     grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
   }
-  .feature-row button {
-    grid-column: 1 / -1;
-  }
-  .feature-meta {
+
+  .subfeature-meta {
     grid-column: 1 / -1;
   }
 }

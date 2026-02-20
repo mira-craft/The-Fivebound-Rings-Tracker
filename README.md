@@ -67,9 +67,13 @@ Both ring bearers must be in a telepathic bond to use this feature, and you must
 
 *(1 charge · 30 ft. · reaction)*
 
-**Trigger:** An ally within your telepathic bond is flanked and targeted by an attack.
+Trigger: An ally within your telepathic bond is flanked and targeted by an attack.
 
 The ally is immune to the flanked condition until the end of their turn.
+
+
+
+
 
 ---
 
@@ -77,7 +81,7 @@ The ally is immune to the flanked condition until the end of their turn.
 
 *(2 charges · 30 ft. · reaction)*
 
-**Trigger:** An ally attuned to a ring takes damage.
+Trigger: An ally attuned to a ring takes damage.
 
 The damage the target takes is halved. You take the amount of damage reduced by this feature.
 
