@@ -239,14 +239,6 @@ export default function CampaignApp() {
         <FlawSection />
 
 
-        <ConfirmModal
-          isOpen={!!modalConfig}
-          title={modalConfig?.title}
-          message={modalConfig?.message}
-          onConfirm={modalConfig?.onConfirm}
-          onCancel={() => setModalConfig(null)}
-        />
-
         <button
           className="undo-fab"
           disabled={(state.history ?? []).length === 0}
@@ -255,17 +247,26 @@ export default function CampaignApp() {
         >
           ↩ Undo
         </button>
-
-        {teleModalOpen && (
-          <TelepathicBondModal
-            teleOptions={teleOptions}
-            setTeleOptions={setTeleOptions}
-            charges={state.charges}
-            onConfirm={handleTeleConfirm}
-            onCancel={handleTeleCancel}
-          />
-        )}
       </div>
+
+      <ConfirmModal
+        isOpen={!!modalConfig}
+        title={modalConfig?.title}
+        message={modalConfig?.message}
+        isRecentlyUsed={!!modalConfig?.isRecentlyUsed}
+        onConfirm={modalConfig?.onConfirm}
+        onCancel={() => setModalConfig(null)}
+      />
+
+      {teleModalOpen && (
+        <TelepathicBondModal
+          teleOptions={teleOptions}
+          setTeleOptions={setTeleOptions}
+          charges={state.charges}
+          onConfirm={handleTeleConfirm}
+          onCancel={handleTeleCancel}
+        />
+      )}
     </>
   );
 }

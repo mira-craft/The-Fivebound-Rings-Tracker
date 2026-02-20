@@ -41,6 +41,7 @@ export function useActionSystem(state, updateState) {
       setModalConfig({
         title: `${label} Recently Used`,
         message: `${label} was used ${elapsed}. Use again?`,
+        isRecentlyUsed: true,
         onConfirm: () => {
           applyAction(actionKey, label, updater);
           setModalConfig(null);

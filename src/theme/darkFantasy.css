@@ -746,6 +746,26 @@ input::placeholder {
   animation: dfModalGlow 3s ease-in-out infinite;
 }
 
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.modal-close:hover {
+  color: var(--color-gold-bright);
+  background: rgba(201, 165, 92, 0.08);
+}
+
 .modal::before,
 .modal::after {
   content: "";
@@ -768,6 +788,19 @@ input::placeholder {
   bottom: 6px;
   right: 6px;
   border-width: 0 2px 2px 0;
+}
+
+.modal-warning-icon {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-gold-bright);
+  box-shadow: 0 0 10px rgba(255, 180, 0, 0.5);
+  pointer-events: none;
 }
 
 .modal h3 {
@@ -799,9 +832,34 @@ input::placeholder {
 }
 
 .modal-checkbox input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
-  accent-color: var(--color-gold-primary);
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 2px solid var(--color-gold-primary);
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.modal-checkbox input[type="checkbox"]:checked {
+  background: var(--color-gold-primary);
+  border-color: var(--color-gold-bright);
+}
+
+.modal-checkbox input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #1a0e00;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1;
 }
 
 .cost-breakdown {

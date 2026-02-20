@@ -29,8 +29,11 @@ export default function TelepathicBondModal({
   }
 
   return (
-    <div className="modal-overlay" style={{ zIndex: 1100 }}>
+    <div className="modal-overlay">
       <div className="modal">
+        <button className="modal-close" onClick={onCancel} aria-label="Close">
+          ✕
+        </button>
         <h3>Telepathic Bond</h3>
         {teleFeature?.description?.map((paragraph, i) => (
           <p key={i}>
