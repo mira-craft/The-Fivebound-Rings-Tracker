@@ -118,5 +118,6 @@ export function useActionSystem(state, updateState) {
     setModalConfig,
     performAction,
     performUndo,
+    applyAction,
   };
 }

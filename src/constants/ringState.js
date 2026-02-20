@@ -11,4 +11,5 @@ export const initialState = {
   lastActionUsage: {},
   history: [],
   activityLog: [],
+  attunedNames: [],
 };
