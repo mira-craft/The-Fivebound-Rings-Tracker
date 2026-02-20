@@ -4,6 +4,8 @@ const CREATURE_TYPES = ["Devil", "Demon", "Fiend"];
 
 const tooltipContent = (
   <p>
+    At the end of a long or short rest, choose a creature type: devil, demon, or fiend
+    (for creatures that are neither devils nor demons).
     As long as a ring bearer is within 30 feet of two other ring bearers, they gain a +1 bonus
     on saving throws forced by the chosen creature type.
   </p>

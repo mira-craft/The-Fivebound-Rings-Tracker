@@ -1,17 +1,26 @@
 import Tooltip from "./Tooltip";
 
-const tooltipContent = (
+const longRestTooltip = (
   <>
     <p>
-      At the end of a long or short rest, choose a creature type: devil, demon, or fiend
-      (for creatures that are neither devils nor demons).
+      <strong>+ 3 Charges</strong>
     </p>
     <p>
-      <strong>10 Charges</strong> (3 recharged at dawn)
+      <strong>Store New Spell</strong>
+    </p>
+      <p>
+      <strong>Choose New Creature type</strong>
+    </p>
+  </>
+);
+
+const shortRestTooltip = (
+  <>
+    <p>
+      <strong>Store New Spell</strong>
     </p>
     <p>
-      <strong>Prerequisite:</strong> Two other ring bearers within 30 feet who are attuned to
-      the rings.
+      <strong>Choose New Creature type</strong>
     </p>
   </>
 );
@@ -19,17 +28,20 @@ const tooltipContent = (
 export default function RestSection({ onLongRest, onShortRest }) {
   return (
     <div className="section">
-      <h2>
-        Rest{" "}
-        <Tooltip content={tooltipContent}>
-          <span className="info-icon">ℹ</span>
-        </Tooltip>
-      </h2>
+      <h2>Rest</h2>
       <div className="rest-actions">
-        <button onClick={onLongRest}>Long Rest</button>
-        <button onClick={onShortRest}>
-          Short Rest
-        </button>
+        <div className="rest-action">
+          <button onClick={onLongRest}>Long Rest</button>
+          <Tooltip content={longRestTooltip}>
+            <span className="info-icon">ℹ</span>
+          </Tooltip>
+        </div>
+        <div className="rest-action">
+          <button onClick={onShortRest}>Short Rest</button>
+          <Tooltip content={shortRestTooltip}>
+            <span className="info-icon">ℹ</span>
+          </Tooltip>
+        </div>
       </div>
     </div>
   );

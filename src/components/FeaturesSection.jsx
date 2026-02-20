@@ -1,14 +1,30 @@
 import Tooltip from "./Tooltip";
 import { FEATURES } from "../data/features";
 
+function formatMeta(meta) {
+  const parts = meta.split(/\b(bonus action|reaction|action)\b/i);
+  const keywords = ["action", "bonus action", "reaction"];
+  return parts.map((part, i) =>
+    keywords.includes(part.toLowerCase())
+      ? <span key={i} className="meta-keyword">{part}</span>
+      : part
+  );
+}
+
 function FeatureTooltip({ name, meta, description, overcharge }) {
   return (
     <>
       <p className="rules-meta">
-        {name} — {meta}
+        {name} — {formatMeta(meta)}
       </p>
-      {description.map((line, i) => (
-        <p key={i}>{line}</p>
+      {description.map((paragraph, i) => (
+        <p key={i}>
+          {paragraph.map((segment, j) => (
+            <span key={j} className={segment.bold ? "text-bold" : undefined}>
+              {segment.text}
+            </span>
+          ))}
+        </p>
       ))}
       {overcharge && (
         <>
@@ -49,13 +65,13 @@ function PrimaryFeature({ name, cost, meta, description, overcharge, onUseFeatur
           </Tooltip>
         </div>
       </div>
-      <div className="feature-meta">{meta}</div>
+      <div className="feature-meta">{formatMeta(meta)}</div>
       {children}
     </div>
   );
 }
 
-function SubFeature({ name, cost, meta, description, onUseFeature }) {
+function SubFeature({ name, cost, meta, trigger, description, onUseFeature }) {
   return (
     <div className="subfeature-item">
       <button className="subfeature-button" onClick={() => onUseFeature(name, cost)}>
@@ -68,6 +84,7 @@ function SubFeature({ name, cost, meta, description, onUseFeature }) {
             <FeatureTooltip
               name={name}
               meta={meta}
+              trigger={trigger}
               description={description}
             />
           }
@@ -75,7 +92,7 @@ function SubFeature({ name, cost, meta, description, onUseFeature }) {
           <span className="info-icon">ℹ</span>
         </Tooltip>
       </div>
-      <div className="subfeature-meta">{meta}</div>
+      <div className="subfeature-meta">{formatMeta(meta)}</div>
     </div>
   );
 }
