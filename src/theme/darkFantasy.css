@@ -373,6 +373,28 @@ input::placeholder {
   margin-bottom: 20px;
 }
 
+.feature-subsection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 14px;
+  border-left: 1px solid rgba(201, 165, 92, 0.2);
+}
+
+.subsection-header {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-gold-soft);
+  opacity: 0.7;
+  margin-bottom: 4px;
+}
+
+.shared-burden-section {
+  margin-top: 24px;
+}
+
 .feature-row {
   display: grid;
   grid-template-columns: minmax(200px, 1fr) minmax(120px, 1fr) auto;
