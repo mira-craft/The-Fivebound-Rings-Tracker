@@ -37,8 +37,11 @@ export default function FeaturesSection({ usedFeatures, onUseFeature }) {
       <h2>Features</h2>
 
       <div className="features-grid">
-        {FEATURES.map(({ name, cost, meta, trigger, description, overcharge }) => (
-          <div key={name} className="feature-row">
+        {FEATURES.map(({ name, cost, meta, trigger, description, overcharge, isSubFeature }) => (
+          <div 
+            key={name} 
+            className={`feature-row ${isSubFeature ? 'sub-feature' : ''}`}
+          >
             <button onClick={() => onUseFeature(name, cost)}>
               {name} ({cost})
             </button>
