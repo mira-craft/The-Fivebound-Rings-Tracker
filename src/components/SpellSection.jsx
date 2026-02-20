@@ -47,7 +47,7 @@ export default function SpellSection({
   return (
     <div className="section">
       <h2>
-        Spell Storing (1x per Dawn){" "}
+        Spell Storing (1x per Dawn, Cost: Spell Level Charges){" "}
         <Tooltip content={tooltipContent}>
           <span className="info-icon">ℹ</span>
         </Tooltip>

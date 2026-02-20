@@ -364,6 +364,16 @@ input::placeholder {
   margin-top: 12px;
 }
 
+.rest-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rest-action .info-icon {
+  margin-left: 0;
+}
+
 /* ---- Features ---- */
 
 .features-list {
@@ -560,8 +570,7 @@ input::placeholder {
 
 .subfeature-meta {
   font-size: 0.75rem;
-  color: var(--color-text-muted);
-  opacity: 0.7;
+  color: rgba(176, 168, 152, 0.7);
   letter-spacing: 0.2px;
   font-family: var(--font-body);
   grid-column: 1 / -1;
@@ -685,6 +694,16 @@ input::placeholder {
   color: var(--color-gold-primary) !important;
   font-size: 0.875rem;
   margin-bottom: 10px !important;
+}
+
+.text-bold {
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.meta-keyword {
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.814);
 }
 
 .overcharge-list {
