@@ -11,6 +11,7 @@ import FeaturesSection from "./FeaturesSection";
 import SpellSection from "./SpellSection";
 import RechargeSection from "./RechargeSection";
 import FlawSection from "./FlawSection";
+import RingboundAegisSection from "./RingboundAegisSection";
 import ActivityPanel from "./ActivityPanel";
 import DecorativeRing from "./ui/DecorativeRing";
 import TelepathicBondModal from "./TelepathicBondModal";
@@ -234,8 +235,9 @@ export default function CampaignApp() {
           rechargeUsedThisDawn={state.rechargeUsedThisDawn}
           onRechargeClick={rechargeWithSlot}
         />
-
+        <RingboundAegisSection />
         <FlawSection />
+
 
         <ConfirmModal
           isOpen={!!modalConfig}

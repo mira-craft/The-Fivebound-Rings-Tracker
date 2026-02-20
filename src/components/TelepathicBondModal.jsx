@@ -32,8 +32,14 @@ export default function TelepathicBondModal({
     <div className="modal-overlay" style={{ zIndex: 1100 }}>
       <div className="modal">
         <h3>Telepathic Bond</h3>
-        {teleFeature?.description?.map((line, index) => (
-          <p key={index}>{line}</p>
+        {teleFeature?.description?.map((paragraph, i) => (
+          <p key={i}>
+            {paragraph.map((segment, j) => (
+              <span key={j} className={segment.bold ? "text-bold" : undefined}>
+                {segment.text}
+              </span>
+            ))}
+          </p>
         ))}
 
         <div className="modal-options">

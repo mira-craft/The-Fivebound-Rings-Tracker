@@ -55,6 +55,8 @@ export default function SpellSection({
 
       <input
         type="text"
+        id="spell-name"
+        name="spell-name"
         placeholder="Spell Name"
         value={localSpellName}
         onChange={(e) => {
@@ -64,6 +66,8 @@ export default function SpellSection({
       />
 
       <select
+        id="spell-level"
+        name="spell-level"
         value={localSpellLevel}
         onChange={(e) => {
           const newLevel = Number(e.target.value);
