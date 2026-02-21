@@ -261,29 +261,28 @@ button.secondary:hover:not(:disabled) {
 
 /* Undo FAB */
 .undo-fab {
-  position: fixed;
-  bottom: 26px;
-  right: 26px;
-  z-index: 400;
+  align-self: flex-end;
+  margin-top: 10px;
   width: auto;
-  padding: 12px 20px;
+  padding: 7px 14px;
   border-radius: 999px;
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: 0.9375rem;
+  font-size: 0.8rem;
   letter-spacing: 0.3px;
   background: linear-gradient(145deg, #181c34, #12152a);
   border: 1px solid var(--color-border-gold-strong);
   box-shadow:
-    0 16px 40px rgba(0, 0, 0, 0.5),
+    0 8px 20px rgba(0, 0, 0, 0.4),
     var(--shadow-glow-gold);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
 }
 
 .undo-fab:hover:not(:disabled) {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   box-shadow:
-    0 20px 48px rgba(0, 0, 0, 0.6),
+    0 12px 28px rgba(0, 0, 0, 0.5),
     var(--shadow-glow-gold-strong);
 }
 
@@ -1118,8 +1117,9 @@ input::placeholder {
   transform: translateY(-50%);
   right: 20px;
   width: 200px;
-  max-height: 400px;
-  overflow-y: auto;
+  max-height: 460px;
+  display: flex;
+  flex-direction: column;
   background: linear-gradient(160deg, #0d0f1e, #080a14);
   border: 1px solid rgba(100, 160, 255, 0.25);
   border-radius: var(--radius-arcane);
@@ -1186,6 +1186,8 @@ input::placeholder {
   flex-direction: column;
   gap: 8px;
   min-height: 0;
+  overflow-y: auto;
+  flex: 1;
 }
 
 .activity-panel__item {
@@ -1250,7 +1252,7 @@ input::placeholder {
 
 @media (max-width: 1100px) {
   .container {
-    padding-bottom: 160px;
+    padding-bottom: 240px;
   }
 
   .activity-panel {
@@ -1262,14 +1264,18 @@ input::placeholder {
     transform: translateX(-50%);
     width: calc(100% - 32px);
     max-width: 500px;
-    max-height: 200px;
+    max-height: 220px;
     margin: 0;
     z-index: 800;
     font-size: 0.85rem;
-    padding: 8px 14px;
+    padding: 8px 14px 10px;
     border-color: rgba(100, 160, 255, 0.15);
     opacity: 0.95;
-    overflow-y: auto;
+    flex-direction: column;
+  }
+
+  .activity-panel__list {
+    max-height: 90px;
   }
 
   .activity-panel__title {
@@ -1279,7 +1285,9 @@ input::placeholder {
   }
 
   .undo-fab {
-    bottom: 140px;
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    margin-top: 8px;
   }
 }
 
