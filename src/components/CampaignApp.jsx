@@ -230,7 +230,11 @@ export default function CampaignApp() {
   return (
     <>
       <DecorativeRing />
-      <ActivityPanel activityLog={state.activityLog ?? []} />
+      <ActivityPanel
+        activityLog={state.activityLog ?? []}
+        onUndo={performUndo}
+        canUndo={(state.history ?? []).length > 0}
+      />
       <div className="container">
         <h1>The Fivebound Rings</h1>
 
@@ -269,14 +273,7 @@ export default function CampaignApp() {
         <FlawSection />
 
 
-        <button
-          className="undo-fab"
-          disabled={(state.history ?? []).length === 0}
-          onClick={performUndo}
-          aria-label="Undo Last Action"
-        >
-          ↩ Undo
-        </button>
+
       </div>
 
       <ConfirmModal

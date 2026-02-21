@@ -1,4 +1,4 @@
-export default function ActivityPanel({ activityLog }) {
+export default function ActivityPanel({ activityLog, onUndo, canUndo }) {
   function formatTime(isoString) {
     const d = new Date(isoString);
     const hh = String(d.getHours()).padStart(2, "0");
@@ -25,6 +25,14 @@ export default function ActivityPanel({ activityLog }) {
           ))}
         </ul>
       )}
+      <button
+        className="undo-fab"
+        disabled={!canUndo}
+        onClick={onUndo}
+        aria-label="Undo Last Action"
+      >
+        ↩ Undo
+      </button>
     </div>
   );
 }
