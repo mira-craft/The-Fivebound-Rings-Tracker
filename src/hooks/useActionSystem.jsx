@@ -50,7 +50,9 @@ export function useActionSystem(state, updateState) {
       return;
     }
 
-    // Case 2: not recently used → show normal confirmation modal
+    // TODO: Case 2 – normales Bestätigungs-Modal vorübergehend deaktiviert.
+    // Aktionen werden direkt ausgeführt, ohne vorherige Bestätigung.
+    /* --- NORMAL CONFIRM MODAL (disabled) ---
     const { chargeCost, message: customMessage } = options;
     const message =
       customMessage ??
@@ -66,6 +68,8 @@ export function useActionSystem(state, updateState) {
         setModalConfig(null);
       },
     });
+    --- END NORMAL CONFIRM MODAL --- */
+    applyAction(actionKey, label, updater);
   }
 
   function undoLastAction() {
@@ -96,6 +100,10 @@ export function useActionSystem(state, updateState) {
   function performUndo() {
     const history = state.history ?? [];
     if (history.length === 0) return;
+
+    // TODO: Undo-Bestätigungs-Modal vorübergehend deaktiviert.
+    // Undo wird direkt ausgeführt, ohne Rückfrage.
+    /* --- UNDO CONFIRM MODAL (disabled) ---
     const lastLabel = history[history.length - 1]?.label;
     setModalConfig({
       title: lastLabel ? `Undo ${lastLabel}?` : "Undo Last Action?",
@@ -111,6 +119,8 @@ export function useActionSystem(state, updateState) {
         undoLastAction();
       },
     });
+    --- END UNDO CONFIRM MODAL --- */
+    undoLastAction();
   }
 
   return {
